@@ -1,1 +1,1 @@
-# CryptoBets
+# CryptoCashNews
