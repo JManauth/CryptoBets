@@ -1,0 +1,26 @@
+body {
+    font-family: 'Roboto Mono', monospace; 
+    height: 100vh;
+    background-color: black;
+}
+
+.hero {
+    background-image: linear-gradient(45deg, black , #0066ff , black);
+}
+
+.hero p {
+    color: #0066ff;
+    text-align: left;
+    text-shadow: 3px 3px black;
+}
+
+.is-primary{
+    background-color: whitesmoke;
+    color: #0066ff;
+    width: 200px;
+    margin: 2%;
+}
+
+h2 {
+    color: #0066ff;
+}
