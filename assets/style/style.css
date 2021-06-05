@@ -24,3 +24,22 @@ body {
 h2 {
     color: #0066ff;
 }
+
+.findBtn {
+    color: greenyellow;
+    background-color: transparent;
+    border-radius: 5px;
+    width: 50px;
+    height: 30px;
+    margin-top: 30px;
+    
+}
+
+.findBtn:hover {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+span {
+    content: "\0024";
+  }
