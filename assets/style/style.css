@@ -25,8 +25,8 @@ body {
 
 h2 {
     color: #0066ff;
-    margin-left: 2%;
-    margin-top: 2%;
+    margin-left:1%;
+    margin-top: 1%;
 }
 
 .findBtn {
@@ -38,6 +38,7 @@ h2 {
     height: 30px;
     margin-left: 1%;
     display: flex;
+    padding: 1%;
     
 }
 
