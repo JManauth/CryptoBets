@@ -18,24 +18,27 @@ body {
     background-color: whitesmoke;
     color: #0066ff;
     width: 200px;
-    margin-left: 2%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: .5%;
 }
 
 h2 {
     color: #0066ff;
-    margin-left: 2%;
-    margin-top: 2%;
+    margin-left:1%;
+    margin-top: 1%;
 }
 
 .findBtn {
     color: greenyellow;
     background-color: transparent;
+    justify-content:  center;
     border-radius: 5px;
     width: 50px;
     height: 30px;
-    margin-top: 30px;
+    margin-left: 1%;
+    display: flex;
+    padding: 1%;
     
 }
 
@@ -46,4 +49,10 @@ h2 {
 
 span {
     content: "\0024";
+  }
+
+  .box {
+      background-color: black; 
+      border: none;
+      margin: none;
   }
