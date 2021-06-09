@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto Mono', monospace; 
-    height: 100vh;
+    height: 200vh;
     background-color: black;
 }
 
@@ -17,6 +17,7 @@ body {
 .is-primary{
     background-color: whitesmoke;
     color: #0066ff;
+    border: 1px solid #0066ff;
     width: 200px;
     margin-left: 1%;
     margin-top: 1%;
@@ -42,6 +43,16 @@ h2 {
     
 }
 
+#list1,
+#list2,
+#list3,
+#list4,
+#list5 {
+    color:greenyellow;
+    
+}
+
+
 .findBtn:hover {
     color: greenyellow;
     border: 1px solid greenyellow;
@@ -60,7 +71,11 @@ span {
   }
 
 .news{
-    background-color: #ffffff;
+    background-color: #000000;
+    padding: 1%;
+    color:#0066ff;
+    border: 1px solid #0066ff;
+    border-radius: 1%;
     min-height: 300px;
     max-width: 75%;
     margin-left: auto;
