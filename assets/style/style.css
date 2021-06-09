@@ -58,3 +58,14 @@ span {
       border: none;
       margin: none;
   }
+
+.news{
+    background-color: #ffffff;
+    min-height: 300px;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+a {
+    font-size: larger;
+}
