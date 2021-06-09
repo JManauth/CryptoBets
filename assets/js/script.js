@@ -15,27 +15,16 @@ fetch(newsApi, {
 })
 .then (function(data) {
    console.log(data);
-   for( var i = 0; i < 5; i++){
+   for( var i = 1; i < 6; i++){
     var random = Math.floor(Math.random() * 24);
-    console.log(random);
     var link = document.getElementById('list' + i);
     var paragraph = document.getElementById('par' + i);
-    console.log(data.data[random].title);
-    console.log(data.data[random].description);
-    console.log(data.data[random].url);
+    console.log(random);
     $(link).text(data.data[random].title);
     $(paragraph).text(data.data[random].description);
     $(link).attr("href", data.data[random].url);
     $(link).attr("target", data.data[random].url);
    }
-   /*
-   console.log(data.data[0].title);
-   console.log(data.data[0].description);
-   console.log(data.data[0].url);
-   console.log(data.data[5].title);
-   console.log(data.data[5].description);
-   console.log(data.data[5].url);
-   */
 })
 
 findBtn.on("click", function (event) {
@@ -55,9 +44,6 @@ findBtn.on("click", function (event) {
         for( var i = 0; i < 5; i++){
             var link = document.getElementById('list' + i);
             var paragraph = document.getElementById('par' + i);
-            console.log(data.data[i].title);
-            console.log(data.data[i].description);
-            console.log(data.data[i].url);
             $(link).text(data.data[i].title);
             $(paragraph).text(data.data[i].description);
             $(link).attr("href", data.data[i].url);
@@ -65,6 +51,7 @@ findBtn.on("click", function (event) {
         };
     })
 });
+
 
 
 
