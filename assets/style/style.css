@@ -18,32 +18,54 @@ body {
     background-color: whitesmoke;
     color: #0066ff;
     width: 200px;
-    margin-left: 2%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: .5%;
 }
 
 h2 {
     color: #0066ff;
-    margin-left: 2%;
-    margin-top: 2%;
+    margin-left:1%;
+    margin-top: 1%;
 }
 
 .findBtn {
     color: greenyellow;
     background-color: transparent;
+    justify-content:space-around;
     border-radius: 5px;
     width: 50px;
     height: 30px;
-    margin-top: 30px;
+    margin-left: 1%;
+    display: flex;
+    padding: 4px;
     
 }
 
 .findBtn:hover {
-    color: #ffffff;
-    border: 1px solid #ffffff;
+    color: greenyellow;
+    border: 1px solid greenyellow;
+    background-color: #0066ff;
 }
 
 span {
     content: "\0024";
+    
   }
+
+  .box {
+      background-color: black; 
+      border: none;
+      margin: none;
+  }
+
+.news{
+    background-color: #ffffff;
+    min-height: 300px;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+a {
+    font-size: larger;
+}
