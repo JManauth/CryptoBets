@@ -52,6 +52,7 @@ findBtn.on("click", function (event) {
     })
     .then(function(data){
         console.log(data)
+<<<<<<< HEAD
         for( var i = 0; i < 5; i++){
             var link = document.getElementById('list' + i);
             var paragraph = document.getElementById('par' + i);
@@ -65,5 +66,13 @@ findBtn.on("click", function (event) {
         };
     })
 });
+
+=======
+       
+   
+})
+        
+})
+>>>>>>> 5e1e6bb30e8c04804ca8d6d98dffc3943807da79
 
 

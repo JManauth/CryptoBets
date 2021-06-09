@@ -32,23 +32,25 @@ h2 {
 .findBtn {
     color: greenyellow;
     background-color: transparent;
-    justify-content:  center;
+    justify-content:space-around;
     border-radius: 5px;
     width: 50px;
     height: 30px;
     margin-left: 1%;
     display: flex;
-    padding: 1%;
+    padding: 4px;
     
 }
 
 .findBtn:hover {
-    color: #ffffff;
-    border: 1px solid #ffffff;
+    color: greenyellow;
+    border: 1px solid greenyellow;
+    background-color: #0066ff;
 }
 
 span {
     content: "\0024";
+    
   }
 
   .box {
