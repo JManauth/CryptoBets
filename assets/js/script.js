@@ -2,30 +2,61 @@ var newsApi = 'http://api.mediastack.com/v1/news?access_key=126705cb9c518744d681
 var inputArea = $('#input')
 var findBtn = $('.findBtn')
 var paragraphBreak = document.createElement('br');
+var newRandom = Math.floor(Math.random() * 10)
+
 
 // posts news on to website
-
-
-
-fetch(newsApi, {
+var stockApi = "https://api.coincap.io/v2/assets"
+fetch(stockApi, {
 
 })
-.then (function(response) {
-    return response.json()
+.then(function(response) {
+   return response.json()
 })
-.then (function(data) {
-   console.log(data);
-   for( var i = 1; i < 6; i++){
-    var random = Math.floor(Math.random() * 24);
-    var link = document.getElementById('list' + i);
-    var paragraph = document.getElementById('par' + i);
-    console.log(random);
-    $(link).text(data.data[random].title);
-    $(paragraph).text(data.data[random].description);
-    $(link).attr("href", data.data[random].url);
-    $(link).attr("target", data.data[random].url);
-   }
+.then(function(data) {
+    console.log(data)
+    console.log(data.data[newRandom].name)
+    var newNewsApi = "http://api.mediastack.com/v1/news?access_key=126705cb9c518744d6816588b7be6b11&languages=en&keywords=" + data.data[newRandom].name
+    fetch(newNewsApi, {
+
+    })
+    .then(function(response){
+        return response.json()
+    })
+    .then(function(data){
+        console.log(data);
+        for ( var i = 1; i < 6; i++ ){
+            var random = Math.floor(Math.random() * 24);
+            var link = document.getElementById('list' + i);
+            var paragraph = document.getElementById('par' + i);
+            $(link).text(data.data[random].title);
+            $(paragraph).text(data.data[random].description);
+            $(link).attr("href", data.data[random].url);
+            $(link).attr("target", data.data[random].url);
+        }
+    })
 })
+
+
+// fetch(newsApi, {
+
+// })
+// .then (function(response) {
+//     return response.json()
+// })
+// .then (function(data) {
+//    console.log(data);
+//    for( var i = 1; i < 6; i++){
+//     var random = Math.floor(Math.random() * 24);
+//     var link = document.getElementById('list' + i);
+//     var paragraph = document.getElementById('par' + i);
+//     console.log(random);
+//     $(link).text(data.data[random].title);
+//     $(paragraph).text(data.data[random].description);
+//     $(link).attr("href", data.data[random].url);
+//     $(link).attr("target", data.data[random].url);
+//    }
+// })
 
 findBtn.on("click", function (event) {
     
