@@ -3,6 +3,22 @@ var inputArea = $('#input')
 var findBtn = $('.findBtn')
 var paragraphBreak = document.createElement('br');
 var newRandom = Math.floor(Math.random() * 10)
+var randomArray = [];
+
+function makeRandomArray(){
+    for ( i = 0; randomArray.length < 5; i++){
+        var newNewRandom = Math.floor(Math.random() * 9);
+        for ( p = 0; p < randomArray.length; p++){
+            if (newNewRandom === randomArray[p]){
+                console.log('there is multiple of the number ' + newNewRandom);
+                randomArray.splice( p, 1);
+            }
+        } 
+        randomArray.push(newNewRandom);
+        console.log(randomArray); 
+    }
+};
+makeRandomArray();
 
 
 // posts news on to website
@@ -15,15 +31,16 @@ fetch(stockApi, {
 })
 .then(function(data) {
     console.log(data)
-    console.log(data.data[newRandom].name)
-    var newNewsApi = "http://api.mediastack.com/v1/news?access_key=126705cb9c518744d6816588b7be6b11&languages=en&keywords=" + data.data[newRandom].name
-    fetch(newNewsApi, {
+    for( x = 0; x < randomArray.length; x++){
+        console.log(data.data[randomArray[x]].name);
+        var newNewsApi = "http://api.mediastack.com/v1/news?access_key=126705cb9c518744d6816588b7be6b11&languages=en&keywords=" + data.data[newRandom].name;
+        fetch(newNewsApi, {
 
-    })
-    .then(function(response){
+        })
+        .then(function(response){
         return response.json()
-    })
-    .then(function(data){
+        })
+        .then(function(data){
         console.log(data);
         for ( var i = 1; i < 6; i++ ){
             var random = Math.floor(Math.random() * 24);
@@ -34,7 +51,8 @@ fetch(stockApi, {
             $(link).attr("href", data.data[random].url);
             $(link).attr("target", data.data[random].url);
         }
-    })
+        })
+    }
 })
 
 
@@ -82,7 +100,3 @@ findBtn.on("click", function (event) {
         };
     })
 });
-
-
-
-
