@@ -40,9 +40,10 @@ fetch(stockApi, {
 
 
     }
-    console.log(data.data[newRandom].name)
-    var newNewsApi = "https://api.currentsapi.services/v1/search?keywords=" +data.data[newRandom].name+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy"
-    fetch(newNewsApi, {
+    for( x = 0; x < randomArray.length; x++){
+        console.log(data.data[randomArray[x]].name);
+        var newNewsApi = "https://api.currentsapi.services/v1/search?keywords=" +data.data[randomArray[x]].name+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+        fetch(newNewsApi, {
 
         })
         .then(function(response){
