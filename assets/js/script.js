@@ -31,12 +31,6 @@ fetch(stockApi, {
 })
 .then(function(data) {
     console.log(data)
-<<<<<<< HEAD
-    for( x = 0; x < randomArray.length; x++){
-        console.log(data.data[randomArray[x]].name);
-        var newNewsApi = "http://api.mediastack.com/v1/news?access_key=126705cb9c518744d6816588b7be6b11&languages=en&keywords=" + data.data[newRandom].name;
-        fetch(newNewsApi, {
-=======
     for (var i = 0; i < 5; i++){
         var name = data.data[i].name;
         var ranking = data.data[i].rank;
@@ -49,7 +43,6 @@ fetch(stockApi, {
     console.log(data.data[newRandom].name)
     var newNewsApi = "https://api.currentsapi.services/v1/search?keywords=" +data.data[newRandom].name+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy"
     fetch(newNewsApi, {
->>>>>>> b15984fcbf7a3bdc5d422d12ff99fc277a9b7940
 
         })
         .then(function(response){
