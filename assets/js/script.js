@@ -1,8 +1,12 @@
-var newsApi = 'http://api.mediastack.com/v1/news?access_key=126705cb9c518744d6816588b7be6b11&languages=en&keywords=BTC';
-var inputArea = $('#input')
-var findBtn = $('.findBtn')
+var inputArea = $('#input');
+var findBtn = $('.findBtn');
+var card1 = $('#card1');
+var card2 = $('#card2');
+var card3 = $('#card3');
+var card4 = $('#card4');
+var card5 = $('#card5');
 var paragraphBreak = document.createElement('br');
-var newRandom = Math.floor(Math.random() * 10)
+var newRandom = Math.floor(Math.random() * 10);
 var randomArray = [];
 
 function makeRandomArray(){
@@ -15,7 +19,7 @@ function makeRandomArray(){
             }
         } 
         randomArray.push(newNewRandom);
-        console.log(randomArray+"wtf"); 
+        console.log(randomArray); 
     }
 };
 makeRandomArray();
@@ -36,7 +40,17 @@ fetch(stockApi, {
         var ranking = data.data[i].rank;
         var price = data.data[i].priceUsd;
         var symbol = data.data[i].symbol;
-        console.log(name, ranking, Math.round(price *1000)/1000, symbol)
+        var marketCap = data.data[i].marketCapUsd;
+        var rank = document.getElementById("rank"+i);
+        var names = document.getElementById("name"+i);
+        var caps = document.getElementById("cap"+i);
+        var prices = document.getElementById("price"+i);
+        var symbol = document.getElementById("symbol"+i);
+        console.log(name, ranking, symbol);
+        $(rank).text("Rank: " +ranking);
+        $(names).text(name);
+        $(caps).text("Market Cap: " +Math.round(marketCap)+"$");
+        $(prices).text("Current Price: " +Math.round(price * 1000)/1000+"$");
 
 
     }
@@ -55,35 +69,15 @@ fetch(stockApi, {
             var random = Math.floor(Math.random() * 24);
             var link = document.getElementById('list' + i);
             var paragraph = document.getElementById('par' + i);
-            $(link).text(data.data[random].title);
-            $(paragraph).text(data.data[random].description);
-            $(link).attr("href", data.data[random].url);
-            $(link).attr("target", data.data[random].url);
+            console.log(data.news[random].title);
+            $(link).text(data.news[random].title);
+            $(paragraph).text(data.news[random].description);
+            $(link).attr("href", data.news[random].url);
+            $(link).attr("target", data.news[random].url);
         }
         })
     }
 })
-
-
-// fetch(newsApi, {
-
-// })
-// .then (function(response) {
-//     return response.json()
-// })
-// .then (function(data) {
-//    console.log(data);
-//    for( var i = 1; i < 6; i++){
-//     var random = Math.floor(Math.random() * 24);
-//     var link = document.getElementById('list' + i);
-//     var paragraph = document.getElementById('par' + i);
-//     console.log(random);
-//     $(link).text(data.data[random].title);
-//     $(paragraph).text(data.data[random].description);
-//     $(link).attr("href", data.data[random].url);
-//     $(link).attr("target", data.data[random].url);
-//    }
-// })
 
 findBtn.on("click", function (event) {
     
@@ -98,14 +92,139 @@ findBtn.on("click", function (event) {
         return response.json();
     })
     .then(function(data){
+        console.log(data);
+        for( var i = 0; i < 5; i++){
+            var link = document.getElementById('list' + i);
+            var paragraph = document.getElementById('par' + i);
+            $(link).text(data.news[i].title);
+            $(paragraph).text(data.news[i].description);
+            $(link).attr("href", data.news[i].url);
+            $(link).attr("target", data.news[i].url);
+        };
+    })
+});
+
+card1.on('click', function(event){
+    var cryptoName = $("#name0").text();
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    console.log(newsApiUrl)
+
+    fetch(newsApiUrl, {
+    
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+        for( var i = 0; i < 5; i++){
+            var link = document.getElementById('list' + i);
+            var paragraph = document.getElementById('par' + i);
+            $(link).text(data.news[i].title);
+            $(paragraph).text(data.news[i].description);
+            $(link).attr("href", data.news[i].url);
+            $(link).attr("target", data.news[i].url);
+        };
+    })
+    
+})
+
+card2.on('click', function(event){
+    var cryptoName = $("#name1").text();
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    console.log(newsApiUrl)
+
+    fetch(newsApiUrl, {
+    
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+        for( var i = 0; i < 5; i++){
+            var link = document.getElementById('list' + i);
+            var paragraph = document.getElementById('par' + i);
+            $(link).text(data.news[i].title);
+            $(paragraph).text(data.news[i].description);
+            $(link).attr("href", data.news[i].url);
+            $(link).attr("target", data.news[i].url);
+        };
+    })
+    
+})
+
+card3.on('click', function(event){
+    var cryptoName = $("#name2").text();
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    console.log(newsApiUrl);
+
+    fetch(newsApiUrl, {
+    
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+        for( var i = 0; i < 5; i++){
+            var link = document.getElementById('list' + i);
+            var paragraph = document.getElementById('par' + i);
+            $(link).text(data.news[i].title);
+            $(paragraph).text(data.news[i].description);
+            $(link).attr("href", data.news[i].url);
+            $(link).attr("target", data.news[i].url);
+        };
+    })
+    
+})
+
+card4.on('click', function(event){
+    var cryptoName = $("#name3").text();
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    console.log(newsApiUrl);
+    
+    fetch(newsApiUrl, {
+    
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data){
         console.log(data)
         for( var i = 0; i < 5; i++){
             var link = document.getElementById('list' + i);
             var paragraph = document.getElementById('par' + i);
-            $(link).text(data.data[i].title);
-            $(paragraph).text(data.data[i].description);
-            $(link).attr("href", data.data[i].url);
-            $(link).attr("target", data.data[i].url);
+            $(link).text(data.news[i].title);
+            $(paragraph).text(data.news[i].description);
+            $(link).attr("href", data.news[i].url);
+            $(link).attr("target", data.news[i].url);
         };
     })
-});
+    
+})
+
+card5.on('click', function(event){
+    var cryptoName = $("#name4").text();
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    console.log(newsApiUrl)
+
+    fetch(newsApiUrl, {
+    
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data)
+        for( var i = 0; i < 5; i++){
+            var link = document.getElementById('list' + i);
+            var paragraph = document.getElementById('par' + i);
+            $(link).text(data.news[i].title);
+            $(paragraph).text(data.news[i].description);
+            $(link).attr("href", data.news[i].url);
+            $(link).attr("target", data.news[i].url);
+        };
+    })
+    
+})
