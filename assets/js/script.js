@@ -15,7 +15,7 @@ function makeRandomArray(){
             }
         } 
         randomArray.push(newNewRandom);
-        console.log(randomArray); 
+        console.log(randomArray+""); 
     }
 };
 makeRandomArray();
