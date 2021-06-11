@@ -108,5 +108,11 @@ a {
 
 .card-header-title{
     color: greenyellow;
+    justify-content: center;
     
+}
+
+li {
+    color: greenyellow;
+    text-align: right;
 }
