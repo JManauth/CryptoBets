@@ -25,7 +25,7 @@ fetch(stockApi, {
 
     }
     console.log(data.data[newRandom].name)
-    var newNewsApi = "http://api.mediastack.com/v1/news?access_key=126705cb9c518744d6816588b7be6b11&languages=en&keywords=" + data.data[newRandom].name
+    var newNewsApi = "https://api.currentsapi.services/v1/search?keywords=" +data.data[newRandom].name+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy"
     fetch(newNewsApi, {
 
     })
@@ -70,7 +70,7 @@ fetch(stockApi, {
 findBtn.on("click", function (event) {
     
     var input = inputArea.val().trim();
-    var newsApiUrl = 'http://api.mediastack.com/v1/news?access_key=126705cb9c518744d6816588b7be6b11&languages=en&keywords='+input;
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +input+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
     console.log(newsApiUrl)
 
     fetch(newsApiUrl, {
