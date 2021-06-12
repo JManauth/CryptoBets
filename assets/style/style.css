@@ -123,7 +123,7 @@ a {
 .card-header-title{
     color: greenyellow;
     justify-content: center;
-    
+    padding: 1px;
 }
 
 li {
