@@ -59,29 +59,29 @@ fetch(stockApi, {
         $(caps).text("Market Cap: " +Math.round(marketCap)+"$");
         $(prices).text("Current Price: " +Math.round(price * 1000)/1000+"$");
     }
-    for( x = 0; x < randomArray.length; x++){
-        console.log(data.data[randomArray[x]].name);
-        var newNewsApi = "https://api.currentsapi.services/v1/search?keywords=" +data.data[randomArray[x]].name+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
-        fetch(newNewsApi, {
+    // for( x = 0; x < randomArray.length; x++){
+    //     console.log(data.data[randomArray[x]].name);
+    //     var newNewsApi = "https://api.currentsapi.services/v1/search?keywords=" +data.data[randomArray[x]].name+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    //     fetch(newNewsApi, {
 
-        })
-        .then(function(response){
-        return response.json()
-        })
-        .then(function(data){
-        console.log(data);
-        for ( var i = 1; i < 6; i++ ){
-            var random = Math.floor(Math.random() * 24);
-            var link = document.getElementById('list' + i);
-            var paragraph = document.getElementById('par' + i);
-            console.log(data.news[random].title);
-            $(link).text(data.news[random].title);
-            $(paragraph).text(data.news[random].description);
-            $(link).attr("href", data.news[random].url);
-            $(link).attr("target", data.news[random].url);
-        }
-        })
-    }
+    //     })
+    //     .then(function(response){
+    //     return response.json()
+    //     })
+    //     .then(function(data){
+    //     console.log(data);
+    //     for ( var i = 1; i < 6; i++ ){
+    //         var random = Math.floor(Math.random() * 24);
+    //         var link = document.getElementById('list' + i);
+    //         var paragraph = document.getElementById('par' + i);
+    //         console.log(data.news[random].title);
+    //         $(link).text(data.news[random].title);
+    //         $(paragraph).text(data.news[random].description);
+    //         $(link).attr("href", data.news[random].url);
+    //         $(link).attr("target", data.news[random].url);
+    //     }
+    //     })
+    // }
 })
 
 findBtn.on("click", function (event) {
@@ -90,6 +90,25 @@ findBtn.on("click", function (event) {
     if (input == "" || checkCrypto == false) {
        console.log("WTH");
        return checkCrypto
+    }
+    else {
+        var cryptoInfo = "https://api.coincap.io/v2/assets/"+input 
+
+        fetch(cryptoInfo, {
+
+        })
+        .then(function(response) {
+            return response.json()
+        })
+        .then (function(data){
+            console.log(data);
+            $(".cryptoInfo").addClass("display");
+            $("#cryptoName").text(data.data.name + " " + "'" + data.data.symbol + "'");
+            $("#cryptoRank").text("Rank:" + data.data.rank);
+            $("#cryptoPrice").text("Current Price USD: " + Math.round(data.data.priceUsd * 1000)/1000);
+            $("#marketCapUsd").text("Market Cap: " + Math.round(data.data.marketCapUsd * 1000)/1000);
+
+        })
     }
 
 
