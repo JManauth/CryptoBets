@@ -1,4 +1,4 @@
-var inputArea = $('#input');
+var inputArea = $('#input')
 var findBtn = $('.findBtn');
 var card1 = $('#card1');
 var card2 = $('#card2');
@@ -8,6 +8,7 @@ var card5 = $('#card5');
 var paragraphBreak = document.createElement('br');
 var newRandom = Math.floor(Math.random() * 10);
 var randomArray = [];
+var cryptos = [];
 
 function makeRandomArray(){
     for ( i = 0; randomArray.length < 5; i++){
@@ -35,6 +36,13 @@ fetch(stockApi, {
 })
 .then(function(data) {
     console.log(data)
+    for (var i = 0; i < 100; i++) {
+        cryptos.push(data.data[i].id, data.data[i].symbol)
+       
+    }
+    console.log(cryptos)
+    
+
     for (var i = 0; i < 5; i++){
         var name = data.data[i].name;
         var ranking = data.data[i].rank;
@@ -45,14 +53,11 @@ fetch(stockApi, {
         var names = document.getElementById("name"+i);
         var caps = document.getElementById("cap"+i);
         var prices = document.getElementById("price"+i);
-        var symbol = document.getElementById("symbol"+i);
         console.log(name, ranking, symbol);
         $(rank).text("Rank: " +ranking);
-        $(names).text(name);
+        $(names).text(name+ " '" + symbol + "'");
         $(caps).text("Market Cap: " +Math.round(marketCap)+"$");
         $(prices).text("Current Price: " +Math.round(price * 1000)/1000+"$");
-
-
     }
     for( x = 0; x < randomArray.length; x++){
         console.log(data.data[randomArray[x]].name);
@@ -80,10 +85,16 @@ fetch(stockApi, {
 })
 
 findBtn.on("click", function (event) {
-    
     var input = inputArea.val().trim();
+    var checkCrypto = cryptos.includes(input);
+    if (input == "" || checkCrypto == false) {
+       console.log("WTH");
+       return checkCrypto
+    }
+
+
     var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +input+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
-    console.log(newsApiUrl)
+    
 
     fetch(newsApiUrl, {
     
@@ -124,6 +135,7 @@ card1.on('click', function(event){
             $(paragraph).text(data.news[i].description);
             $(link).attr("href", data.news[i].url);
             $(link).attr("target", data.news[i].url);
+           
         };
     })
     
