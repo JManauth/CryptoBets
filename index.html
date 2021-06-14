@@ -26,6 +26,7 @@
               <p class="subtitle">
                 A Simple One Stop Shop for Your Cryptocurrency News
               </p>
+              <p id="time-display"></p>
             </div>
           </section>
     </header>
@@ -34,10 +35,53 @@
     
 
     <div class="box">
+
+            <!-- dropdown cryptoinvesting menu -->
+<div class="dropdown is-hoverable">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+      <span>Invest in Crypto Here...</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+    <div class="dropdown-content">
+      <a href="https://www.coinbase.com/" class="dropdown-item" target="_blank">
+        Coinbase
+      </a>
+      <a href="https://robinhood.com/" class="dropdown-item" target="_blank">
+        Robinhood
+      </a>
+      <a href="https://blockfi.com/" class="dropdown-item" target="_blank">
+        BlockFi
+      </a>
+      <a href="https://www.gemini.com/" class="dropdown-item" target="_blank">
+        Gemini
+      </a>
+      <a href="https://www.etoro.com/" class="dropdown-item" target="_blank">
+        eToro
+      </a>
+      <a href="https://www.binance.com/en" class="dropdown-item" target="_blank">
+        Binance
+      </a>
+      <a href="https://www.exodus.com/" class="dropdown-item" target="_blank">
+        Exodus
+      </a>
+      <hr class="dropdown-divider">
+      <a target="_blank" href="https://www.google.com/search?q=Cryptocurrency+Trading+Apps&safe=off&sxsrf=ALeKk01UeSksRUxGNEe6zCgu25DhCFU1zg%3A1623643810377&source=hp&ei=otbGYIWrFMeU0PEP4qGi6AI&iflsig=AINFCbYAAAAAYMbksg05g1w3MSB2eRHULY5fVhyMTt_x&oq=Cryptocurrency+Trading+Apps&gs_lcp=Cgdnd3Mtd2l6EAMyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADIGCAAQFhAeMgYIABAWEB46BwgjEOoCECc6DQguEMcBEK8BEOoCECc6BAgjECc6BAgAEEM6CgguELEDEEMQkwI6BwguELEDEEM6BQgAELEDOggILhCxAxCDAToCCC46DgguELEDEIMBEMcBEK8BOgQIABAKOgUILhCxAzoHCAAQsQMQQzoHCCMQsQIQJzoKCAAQsQMQsQMQCjoHCAAQsQMQCjoHCAAQyQMQCjoFCAAQhgM6CggAEIcCELEDEBQ6CAgAELEDEJECOgUIABCRAjoHCAAQhwIQFDoFCAAQyQNQ_yRYs6wBYP-wAWgccAB4AIABhgGIAeYikgEENDcuN5gBAKABAaoBB2d3cy13aXqwAQo&sclient=gws-wiz&ved=0ahUKEwiFhLrEoJbxAhVHCjQIHeKQCC0Q4dUDCAk&uact=5" class="dropdown-item">
+        More
+      </a>
+    </div>
+  </div>
+</div>
+
+      <form>
         <h2>Search For Cryptocurrency:</h2>
         <input class="input is-primary" type="text" placeholder="Name or Symbol" id="input">
         <button id="findBtn" class="findBtn"><span>&#36;earch</span></button>
-
+      </form>
         <div class="columns is-mobile is-centered"></div>
           <div class="card column is-narrow" id="card1">
             <header class="card-header">
@@ -99,7 +143,7 @@
         </div>     
     </div>
     
-    <div class="cryptoInfo none">
+    <div class="cryptoInfo none" id="previousCrypto">
       <h1 class="name" id="cryptoName"></h1>
       <li class="cryptoRank" id="cryptoRank"></li>
       <li class="price" id="cryptoPrice"></li>
@@ -107,6 +151,9 @@
     </div>
 
     <div class="news">
+        <a  id="list0" href=""></a>
+        <p id="par0"></p>
+
         <a  id="list1" href=""></a>
         <p id="par1"></p>
 
@@ -115,12 +162,9 @@
 
         <a  id="list3" href=""></a>
         <p id="par3"></p>
-
+        
         <a  id="list4" href=""></a>
         <p id="par4"></p>
-        
-        <a  id="list5" href=""></a>
-        <p id="par5"></p>
     </div>
 
 
@@ -135,7 +179,7 @@
       </div>
     </footer>
   </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>

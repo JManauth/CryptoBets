@@ -42,23 +42,29 @@ h2 {
     padding: 4px;
 }
 
+#list0,
 #list1,
 #list2,
 #list3,
-#list4,
-#list5 {
+#list4 {
     color:greenyellow;
 }
 
+#list0:hover,
 #list1:hover,
 #list2:hover,
 #list3:hover,
-#list4:hover,
 #list5:hover {
     color: whitesmoke;
 }
 
-
+#previousText{
+    color: greenyellow;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    font-size: 30px;
+}
 .findBtn:hover {
     color: greenyellow;
     border: 1px solid greenyellow;
@@ -144,6 +150,7 @@ li {
     max-width: 75%;
     margin-left: auto;
     margin-right: auto;
+    font-size: 30px;
 }   
 
 .cryptoInfo li {
@@ -156,4 +163,25 @@ li {
 
 .display {
     display: block;
+}
+
+.field.dropdown-item input{
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    margin-bottom: 0px;
+  }
+.dropdown {
+      display:inline-block;
+      margin-left: 80%;
+      border: 1px solid #0066ff;
+  }
+
+#time-display {
+    text-align: right;
+}
+.cryptoInfo h1 {
+    border-right: 1px dotted #0066ff;
+    border-bottom: 1px dotted #0066ff;
+    margin-right: 75%;
 }
