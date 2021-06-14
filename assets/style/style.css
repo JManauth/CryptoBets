@@ -135,7 +135,7 @@ a {
     border-bottom: .25px dotted greenyellow;
 }
 
-li {
+.card li {
     color: greenyellow;
     text-align: right;
 }
@@ -184,4 +184,11 @@ li {
     border-right: 1px dotted #0066ff;
     border-bottom: 1px dotted #0066ff;
     margin-right: 75%;
+}
+ul.ui-autocomplete {
+    color: greenyellow;
+    display:flex;
+    max-height: 75%;
+    width: 200px;
+    background-color: black;
 }
