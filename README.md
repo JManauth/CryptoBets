@@ -6,7 +6,7 @@
 * [Screenshots](#Screenshots)
 * [Deployed URL](#Deployed-url)
 
-## Project Overview 💰
+### Project Overview 💰
 
 * The goal of this project was to create an interactive front-end cryptocurrency news application that utilizes the CSS framework other than Boostrap, two server-side APIs, and client-side storage to store data
 
@@ -26,7 +26,7 @@
 
 * The user's events will be saved even upon refreshing.
 
-## Screenshots 💵
+#### Screenshots 💵
 
 
 ![DD61F21A-C420-4400-954E-428C8967B4C6_1_201_a](https://user-images.githubusercontent.com/78969397/121785964-a3400180-cb82-11eb-8905-0f44528e7bbf.jpeg)
@@ -36,6 +36,6 @@
 
 
 
-## Deployed URL 💸
+##### Deployed URL 💸
 
 [CryptoCash-NEWS](https://jmanauth.github.io/CryptoCashNews/ "CryptoCash-NEWS Home")

@@ -122,8 +122,11 @@ a {
 
 .card-header-title{
     color: greenyellow;
-    justify-content: center;
+    justify-content: initial;
     padding: 1px;
+    margin-bottom: 30px;
+    border-right: .25px dotted greenyellow;
+    border-bottom: .25px dotted greenyellow;
 }
 
 li {
