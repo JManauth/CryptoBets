@@ -9,10 +9,21 @@ var paragraphBreak = document.createElement('br');
 var newRandom = Math.floor(Math.random() * 10);
 var randomArray = [];
 var cryptos = [];
+var inputCrypto = localStorage.getItem("input");
+var previousSearchEl = document.createElement('h1');
+var previousCrypto = document.getElementById('previousCrypto');
+
+// create time-display in hero box
+var timeDisplayEl = $("#time-display");
+function displayTime() {
+    var rightNow = moment().format("MMM DD, YYYY [at] hh:mm:ss a");
+    timeDisplayEl.text(rightNow);
+}
+setInterval(displayTime, 1000);
 
 function makeRandomArray(){
     for ( i = 0; randomArray.length < 5; i++){
-        var newNewRandom = Math.floor(Math.random() * 9);
+        var newNewRandom = Math.floor(Math.random() * 29);
         for ( p = 0; p < randomArray.length; p++){
             if (newNewRandom === randomArray[p]){
                 console.log('there is multiple of the number ' + newNewRandom);
@@ -59,40 +70,69 @@ fetch(stockApi, {
         $(caps).text("Market Cap: " +Math.round(marketCap)+"$");
         $(prices).text("Current Price: " +Math.round(price * 1000)/1000+"$");
     }
-    // for( x = 0; x < randomArray.length; x++){
-    //     console.log(data.data[randomArray[x]].name);
-    //     var newNewsApi = "https://api.currentsapi.services/v1/search?keywords=" +data.data[randomArray[x]].name+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
-    //     fetch(newNewsApi, {
 
-    //     })
-    //     .then(function(response){
-    //     return response.json()
-    //     })
-    //     .then(function(data){
-    //     console.log(data);
-    //     for ( var i = 1; i < 6; i++ ){
-    //         var random = Math.floor(Math.random() * 24);
-    //         var link = document.getElementById('list' + i);
-    //         var paragraph = document.getElementById('par' + i);
-    //         console.log(data.news[random].title);
-    //         $(link).text(data.news[random].title);
-    //         $(paragraph).text(data.news[random].description);
-    //         $(link).attr("href", data.news[random].url);
-    //         $(link).attr("target", data.news[random].url);
-    //     }
-    //     })
-    // }
+    if (inputCrypto === null){
+        var newNewsApi = "https://api.currentsapi.services/v1/search?keywords=" +'bitcoin'+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+            fetch(newNewsApi)
+            .then(res => res.json())
+            .then(function(data){
+                console.log(data);
+                for (i = 0; i < 5; i++){
+                var link = document.getElementById('list' + i);
+                var paragraph = document.getElementById('par' + i);
+                console.log(data.news[randomArray[i]].title);
+                $(link).text(data.news[randomArray[i]].title);
+                $(paragraph).text(data.news[randomArray[i]].description);
+                $(link).attr("href", data.news[randomArray[i]].url);
+                $(link).attr("target", data.news[randomArray[i]].url);
+            }
+        })
+    } else {
+            console.log('sup foo');
+            var localStorageCryptoAPI = "https://api.coincap.io/v2/assets/"+inputCrypto;
+            var localStorageAPI = "https://api.currentsapi.services/v1/search?keywords=" + inputCrypto + "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+            $(previousSearchEl).text('PREVIOUSLY SEARCHED COIN:');
+            $('#previousCrypto').before(previousSearchEl);
+            $(previousSearchEl).attr('id', "previousText")
+
+            fetch(localStorageCryptoAPI)
+            .then(res => res.json())
+            .then(function(data){
+                $(".cryptoInfo").addClass("display");
+                $("#cryptoName").text(data.data.name + " " + "'" + data.data.symbol + "'");
+                $("#cryptoRank").text("Rank:" + data.data.rank);
+                $("#cryptoPrice").text("Current Price USD: " + Math.round(data.data.priceUsd * 1000)/1000);
+                $("#marketCapUsd").text("Market Cap: " + Math.round(data.data.marketCapUsd * 1000)/1000);
+            })
+
+            fetch(localStorageAPI)
+            .then(res => res.json())
+            .then(function(data){
+                for (i = 0; i < 5; i++){
+                    var link = document.getElementById('list' + i);
+                    var paragraph = document.getElementById('par' + i);
+                    console.log(data.news[i].title);
+                    $(link).text(data.news[i].title);
+                    $(paragraph).text(data.news[i].description);
+                    $(link).attr("href", data.news[i].url);
+                    $(link).attr("target", data.news[i].url);
+                }
+            })
+        }
 })
 
 findBtn.on("click", function (event) {
+    event.preventDefault();
+    previousSearchEl.remove();
     var input = inputArea.val().trim();
+    localStorage.setItem("input", input);
     var checkCrypto = cryptos.includes(input);
-    if (input == "" || checkCrypto == false) {
+   /* if (input == "" || checkCrypto == false) {
        console.log("WTH");
        return checkCrypto
     }
-    else {
-        var cryptoInfo = "https://api.coincap.io/v2/assets/"+input 
+    else { */
+        var cryptoInfo = "https://api.coincap.io/v2/assets/"+input; 
 
         fetch(cryptoInfo, {
 
@@ -109,7 +149,7 @@ findBtn.on("click", function (event) {
             $("#marketCapUsd").text("Market Cap: " + Math.round(data.data.marketCapUsd * 1000)/1000);
 
         })
-    }
+   // }
 
 
     var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +input+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
@@ -136,8 +176,29 @@ findBtn.on("click", function (event) {
 
 card1.on('click', function(event){
     var cryptoName = $("#name0").text();
-    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    var cryptoNameFinal = cryptoName.split(' ');
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoNameFinal[0];+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    console.log(cryptoNameFinal);
+    console.log(cryptoName);
     console.log(newsApiUrl)
+    console.log(cryptoNameFinal[0])
+    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptoNameFinal[0].toLowerCase();
+
+    fetch(cryptoInfo1, {
+
+    })
+    .then(function(response) {
+         return response.json()
+    })
+    .then (function(data){
+        console.log(data);
+        $(".cryptoInfo").addClass("display");
+        $("#cryptoName").text(data.data.name + " " + "'" + data.data.symbol + "'");
+        $("#cryptoRank").text("Rank:" + data.data.rank);
+        $("#cryptoPrice").text("Current Price USD: " + Math.round(data.data.priceUsd * 1000)/1000);
+        $("#marketCapUsd").text("Market Cap: " + Math.round(data.data.marketCapUsd * 1000)/1000);
+
+    })
 
     fetch(newsApiUrl, {
     
@@ -162,8 +223,26 @@ card1.on('click', function(event){
 
 card2.on('click', function(event){
     var cryptoName = $("#name1").text();
-    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    var cryptoNameFinal = cryptoName.split(' ');
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoNameFinal[0]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
     console.log(newsApiUrl)
+    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptoNameFinal[0].toLowerCase();
+
+    fetch(cryptoInfo1, {
+
+    })
+    .then(function(response) {
+         return response.json()
+    })
+    .then (function(data){
+        console.log(data);
+        $(".cryptoInfo").addClass("display");
+        $("#cryptoName").text(data.data.name + " " + "'" + data.data.symbol + "'");
+        $("#cryptoRank").text("Rank:" + data.data.rank);
+        $("#cryptoPrice").text("Current Price USD: " + Math.round(data.data.priceUsd * 1000)/1000);
+        $("#marketCapUsd").text("Market Cap: " + Math.round(data.data.marketCapUsd * 1000)/1000);
+
+    })
 
     fetch(newsApiUrl, {
     
@@ -187,8 +266,26 @@ card2.on('click', function(event){
 
 card3.on('click', function(event){
     var cryptoName = $("#name2").text();
-    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    var cryptoNameFinal = cryptoName.split(' ');
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoNameFinal[0]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
     console.log(newsApiUrl);
+    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptoNameFinal[0].toLowerCase();
+
+    fetch(cryptoInfo1, {
+
+    })
+    .then(function(response) {
+         return response.json()
+    })
+    .then (function(data){
+        console.log(data);
+        $(".cryptoInfo").addClass("display");
+        $("#cryptoName").text(data.data.name + " " + "'" + data.data.symbol + "'");
+        $("#cryptoRank").text("Rank:" + data.data.rank);
+        $("#cryptoPrice").text("Current Price USD: " + Math.round(data.data.priceUsd * 1000)/1000);
+        $("#marketCapUsd").text("Market Cap: " + Math.round(data.data.marketCapUsd * 1000)/1000);
+
+    })
 
     fetch(newsApiUrl, {
     
@@ -210,10 +307,28 @@ card3.on('click', function(event){
     
 })
 
-card4.on('click', function(event){
+card4.on('click', function(){
     var cryptoName = $("#name3").text();
-    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    var cryptoNameFinal = cryptoName.split(' ');
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoNameFinal[0]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
     console.log(newsApiUrl);
+    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptoNameFinal[0].toLowerCase();
+
+    fetch(cryptoInfo1, {
+
+    })
+    .then(function(response) {
+         return response.json()
+    })
+    .then (function(data){
+        console.log(data);
+        $(".cryptoInfo").addClass("display");
+        $("#cryptoName").text(data.data.name + " " + "'" + data.data.symbol + "'");
+        $("#cryptoRank").text("Rank:" + data.data.rank);
+        $("#cryptoPrice").text("Current Price USD: " + Math.round(data.data.priceUsd * 1000)/1000);
+        $("#marketCapUsd").text("Market Cap: " + Math.round(data.data.marketCapUsd * 1000)/1000);
+
+    })
     
     fetch(newsApiUrl, {
     
@@ -237,8 +352,26 @@ card4.on('click', function(event){
 
 card5.on('click', function(event){
     var cryptoName = $("#name4").text();
-    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    var cryptoNameFinal = cryptoName.split(' ');
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoNameFinal[0]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
     console.log(newsApiUrl)
+    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptoNameFinal[0].toLowerCase();
+
+    fetch(cryptoInfo1, {
+
+    })
+    .then(function(response) {
+         return response.json()
+    })
+    .then (function(data){
+        console.log(data);
+        $(".cryptoInfo").addClass("display");
+        $("#cryptoName").text(data.data.name + " " + "'" + data.data.symbol + "'");
+        $("#cryptoRank").text("Rank:" + data.data.rank);
+        $("#cryptoPrice").text("Current Price USD: " + Math.round(data.data.priceUsd * 1000)/1000);
+        $("#marketCapUsd").text("Market Cap: " + Math.round(data.data.marketCapUsd * 1000)/1000);
+
+    })
 
     fetch(newsApiUrl, {
     
