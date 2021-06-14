@@ -1,17 +1,23 @@
 body {
     font-family: 'Roboto Mono', monospace; 
-    height: 300vh;
+    height: 200vh;
     background-color: black;
 }
 
 .hero {
     background-image: linear-gradient(45deg, black , #0066ff , black);
+    padding-bottom: 0;
 }
 
 .hero p {
     color: #0066ff;
     text-align: left;
     text-shadow: 3px 3px black;
+}
+
+#time-display {
+    text-align: right;
+    
 }
 
 .is-primary{
@@ -136,6 +142,7 @@ li {
 
 .cryptoInfo {
     background-color: #000000;
+    font-size: 30px;
     padding: 1%;
     color:#0066ff;
     border: 1px solid #0066ff;
@@ -150,10 +157,35 @@ li {
     list-style: none;
 }
 
+.cryptoInfo h1 {
+    border-right: 1px dotted #0066ff;
+    border-bottom: 1px dotted #0066ff;
+    margin-right: 75%;
+}
+
 .none {
-    display:none
+    display:none;
 }
 
 .display {
     display: block;
 }
+
+.field.dropdown-item{
+    padding: 0px;
+    margin-bottom: 0px;
+  }
+  
+  .field.dropdown-item input{
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    margin-bottom: 0px;
+  }
+
+  .dropdown {
+      display:inline-block;
+      margin-left: 80%;
+      border: 1px solid #0066ff;
+    
+  }

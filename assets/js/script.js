@@ -1,3 +1,5 @@
+// assigning global variables
+
 var inputArea = $('#input')
 var findBtn = $('.findBtn');
 var card1 = $('#card1');
@@ -10,6 +12,19 @@ var newRandom = Math.floor(Math.random() * 10);
 var randomArray = [];
 var cryptos = [];
 
+var inputCrypto = localStorage.getItem("input")
+
+// create time-display in hero box
+var timeDisplayEl = $("#time-display");
+
+function displayTime() {
+    var rightNow = moment().format("MMM DD, YYYY [at] hh:mm:ss a");
+    timeDisplayEl.text(rightNow);
+  }
+  
+  setInterval(displayTime, 1000);
+
+// creating random array
 function makeRandomArray(){
     for ( i = 0; randomArray.length < 5; i++){
         var newNewRandom = Math.floor(Math.random() * 9);
@@ -41,7 +56,8 @@ fetch(stockApi, {
        
     }
     console.log(cryptos)
-    
+
+
 
     for (var i = 0; i < 5; i++){
         var name = data.data[i].name;
@@ -56,8 +72,8 @@ fetch(stockApi, {
         console.log(name, ranking, symbol);
         $(rank).text("Rank: " +ranking);
         $(names).text(name+ " '" + symbol + "'");
-        $(caps).text("Market Cap: " +Math.round(marketCap)+"$");
-        $(prices).text("Current Price: " +Math.round(price * 1000)/1000+"$");
+        $(caps).text("Market Cap: $" +Math.round(marketCap));
+        $(prices).text("Current Price: $" +Math.round(price * 1000)/1000);
     }
     // for( x = 0; x < randomArray.length; x++){
     //     console.log(data.data[randomArray[x]].name);
@@ -86,6 +102,7 @@ fetch(stockApi, {
 
 findBtn.on("click", function (event) {
     var input = inputArea.val().trim();
+    localStorage.setItem("input", input);
     var checkCrypto = cryptos.includes(input);
     if (input == "" || checkCrypto == false) {
        console.log("WTH");
@@ -105,8 +122,8 @@ findBtn.on("click", function (event) {
             $(".cryptoInfo").addClass("display");
             $("#cryptoName").text(data.data.name + " " + "'" + data.data.symbol + "'");
             $("#cryptoRank").text("Rank:" + data.data.rank);
-            $("#cryptoPrice").text("Current Price USD: " + Math.round(data.data.priceUsd * 1000)/1000);
-            $("#marketCapUsd").text("Market Cap: " + Math.round(data.data.marketCapUsd * 1000)/1000);
+            $("#cryptoPrice").text("Current Price USD: $" + Math.round(data.data.priceUsd * 1000)/1000);
+            $("#marketCapUsd").text("Market Cap: $" + Math.round(data.data.marketCapUsd * 1000)/1000);
 
         })
     }
@@ -133,7 +150,7 @@ findBtn.on("click", function (event) {
         };
     })
 });
-
+// click function for card 1 ticker
 card1.on('click', function(event){
     var cryptoName = $("#name0").text();
     var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
@@ -159,7 +176,7 @@ card1.on('click', function(event){
     })
     
 })
-
+// click function for card 2 ticker
 card2.on('click', function(event){
     var cryptoName = $("#name1").text();
     var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
@@ -184,7 +201,7 @@ card2.on('click', function(event){
     })
     
 })
-
+// click function for card 3 ticker
 card3.on('click', function(event){
     var cryptoName = $("#name2").text();
     var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
@@ -209,7 +226,7 @@ card3.on('click', function(event){
     })
     
 })
-
+// click function for card 4 ticker
 card4.on('click', function(event){
     var cryptoName = $("#name3").text();
     var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
@@ -234,7 +251,7 @@ card4.on('click', function(event){
     })
     
 })
-
+// click function for card 5 ticker
 card5.on('click', function(event){
     var cryptoName = $("#name4").text();
     var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoName+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
