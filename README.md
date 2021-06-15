@@ -1,15 +1,15 @@
 # CryptoCash News 
-📰 💹
+📰 💹 📰 💹 📰 💹
 
 ## Table of Contents 
-📈
+📈 📈 📈 📈 📈 📈 
 * [Project Overview](#Project-overview)
 * [Screenshots](#Screenshots)
 * [Deployed URL](#Deployed-url)
 * [Future Development](#Future-development)
 
 ## Project Overview 
-💰
+💰 💰 💰 💰 💰 💰
 * The goal of this project was to create an interactive front-end cryptocurrency news application that utilizes the CSS framework other than Boostrap, two server-side APIs, and client-side storage to store data
 
 * CSS Framework:
@@ -29,9 +29,9 @@
 * The user's events will be saved even upon refreshing.
 
 ## Screenshots 
-💵
+💵 💵 💵 💵 💵 💵 💵
 
-![DD61F21A-C420-4400-954E-428C8967B4C6_1_201_a](https://user-images.githubusercontent.com/78969397/121785964-a3400180-cb82-11eb-8905-0f44528e7bbf.jpeg)
+![cryptonews111](https://user-images.githubusercontent.com/78969397/122078806-77ab5a00-cdc2-11eb-9781-36f8865c124c.png)
 
 
 
@@ -39,13 +39,15 @@
 
 
 ## Deployed URL 
-💸
+💸 💸 💸 💸 💸 💸
 [CryptoCash-NEWS](https://jmanauth.github.io/CryptoCashNews/ "CryptoCash-NEWS Home")
 
-## Future Development
-
+## Future Development 
+🚀 🚀 🚀 🚀 🚀 🚀
 * Incorporate a live ticker/banner on page
 * Populate charts when cryptocurrency is searched
 * Monetize the site with GoogleAds 
 * Upgrade server-side APIs for more in-depth news and data
+* Create a forum and member page
+* Create a FAQ's of Cryptocurrency and investing
 
