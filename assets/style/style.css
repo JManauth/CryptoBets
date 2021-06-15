@@ -2,6 +2,7 @@ body {
     font-family: 'Roboto Mono', monospace; 
     height: 200vh;
     background-color: black;
+    
 }
 
 .hero {
@@ -141,7 +142,7 @@ a {
     border-bottom: .25px dotted greenyellow;
 }
 
-li {
+.card li {
     color: greenyellow;
     text-align: right;
 }
@@ -179,15 +180,48 @@ li {
 }
 
 .field.dropdown-item input{
+
     border: none;
     border-radius: 0px;
     box-shadow: none;
     margin-bottom: 0px;
   }
 .dropdown {
-      display:inline-block;
-      margin-left: 80%;
-      border: 1px solid #0066ff;
+      margin-left: 1%;
+      padding: none;
+      max-width: none;
+      width: auto;
+  }
+
+  .dropdown button {
+    border: 1px solid greenyellow;
+    background-color: transparent;
+    color: greenyellow;
+  }
+
+  .dropdown button:hover {
+    background-image: linear-gradient(45deg, black , #0066ff , black);
+    color: greenyellow;
+    border: 1px solid greenyellow;
+  }
+
+  .dropdown-content {
+      background-color: black;
+
+  }
+
+  .dropdown-content a {
+      border-bottom: .5px solid greenyellow;
+      border-right: .5px solid greenyellow;
+  }
+
+  .dropdown-content a:hover {
+    background-image: linear-gradient(45deg, black , #0066ff , black);
+    color: greenyellow;
+  }
+
+  .dropdown-item {
+      color: greenyellow;
   }
 
 #time-display {
@@ -198,3 +232,14 @@ li {
     border-bottom: 1px dotted #0066ff;
     margin-right: 75%;
 }
+ul.ui-autocomplete {
+    color: greenyellow;
+    display:flex;
+    max-height: 75%;
+    width: 200px;
+    background-color: black;
+}
+
+/* ul.ui-autocomplete:hover {
+    background-image: linear-gradient(45deg, black , #0066ff , black);
+} */

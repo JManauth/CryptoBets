@@ -11,9 +11,18 @@ var paragraphBreak = document.createElement('br');
 var newRandom = Math.floor(Math.random() * 10);
 var randomArray = [];
 var cryptos = [];
+var cryptosId100 = [];
+var cryptosId = [];
 var inputCrypto = localStorage.getItem("input");
 var previousSearchEl = document.createElement('h1');
 var previousCrypto = document.getElementById('previousCrypto');
+
+$( function() {
+    $( "#input" ).autocomplete({
+      source: cryptosId100
+    });
+  } );
+
 
 // create time-display in hero box
 var timeDisplayEl = $("#time-display");
@@ -63,7 +72,8 @@ fetch(stockApi, {
 .then(function(data) {
     console.log(data)
     for (var i = 0; i < 100; i++) {
-        cryptos.push(data.data[i].id, data.data[i].symbol)
+        cryptos.push(data.data[i].id, data.data[i].symbol);
+        cryptosId100.push(data.data[i].id);
        
     }
     console.log(cryptos)
@@ -80,6 +90,7 @@ fetch(stockApi, {
         var names = document.getElementById("name"+i);
         var caps = document.getElementById("cap"+i);
         var prices = document.getElementById("price"+i);
+        cryptosId.push(data.data[i].id)
         console.log(name, ranking, symbol);
         $(rank).text("Rank: " +ranking);
         $(names).text(name+ " '" + symbol + "'");
@@ -191,14 +202,8 @@ findBtn.on("click", function (event) {
 });
 // click function for card 1 ticker
 card1.on('click', function(event){
-    var cryptoName = $("#name0").text();
-    var cryptoNameFinal = cryptoName.split(' ');
-    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoNameFinal[0];+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
-    console.log(cryptoNameFinal);
-    console.log(cryptoName);
-    console.log(newsApiUrl)
-    console.log(cryptoNameFinal[0])
-    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptoNameFinal[0].toLowerCase();
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptosId[0]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptosId[0];
 
     fetch(cryptoInfo1, {
 
@@ -238,11 +243,9 @@ card1.on('click', function(event){
 })
 // click function for card 2 ticker
 card2.on('click', function(event){
-    var cryptoName = $("#name1").text();
-    var cryptoNameFinal = cryptoName.split(' ');
-    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoNameFinal[0]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptosId[1]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
     console.log(newsApiUrl)
-    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptoNameFinal[0].toLowerCase();
+    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptosId[1];
 
     fetch(cryptoInfo1, {
 
@@ -281,11 +284,8 @@ card2.on('click', function(event){
 })
 // click function for card 3 ticker
 card3.on('click', function(event){
-    var cryptoName = $("#name2").text();
-    var cryptoNameFinal = cryptoName.split(' ');
-    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoNameFinal[0]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
-    console.log(newsApiUrl);
-    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptoNameFinal[0].toLowerCase();
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptosId[2]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptosId[2];
 
     fetch(cryptoInfo1, {
 
@@ -324,11 +324,8 @@ card3.on('click', function(event){
 })
 
 card4.on('click', function(){
-    var cryptoName = $("#name3").text();
-    var cryptoNameFinal = cryptoName.split(' ');
-    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoNameFinal[0]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
-    console.log(newsApiUrl);
-    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptoNameFinal[0].toLowerCase();
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptosId[3]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptosId[3].toLowerCase();
 
     fetch(cryptoInfo1, {
 
@@ -367,11 +364,11 @@ card4.on('click', function(){
 })
 // click function for card 5 ticker
 card5.on('click', function(event){
-    var cryptoName = $("#name4").text();
-    var cryptoNameFinal = cryptoName.split(' ');
-    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptoNameFinal[0]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
+    // var cryptoName = $("#name4").text();
+    // var cryptoNameFinal = cryptoName.split(' ');
+    var newsApiUrl = "https://api.currentsapi.services/v1/search?keywords=" +cryptosId[4]+ "&language=en&apiKey=k6P8Em4qB8ukRQLGTafAvMDafmfTEUTmUeYB-tstXbZM_Xfy";
     console.log(newsApiUrl)
-    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptoNameFinal[0].toLowerCase();
+    var cryptoInfo1 = "https://api.coincap.io/v2/assets/"+cryptosId[4];
 
     fetch(cryptoInfo1, {
 
