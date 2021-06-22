@@ -7,6 +7,7 @@
 * [Screenshots](#Screenshots)
 * [Deployed URL](#Deployed-url)
 * [Future Development](#Future-development)
+* [Contact Info](#Contact-info)
 
 ## Project Overview 
 💰 💰 💰 💰 💰 💰
@@ -50,4 +51,15 @@
 * Upgrade server-side APIs for more in-depth news and data
 * Create a forum and member page
 * Create a FAQ's of Cryptocurrency and investing
+
+## Contact Info
+
+* Phone: 512-658-0469 -- Billy Dorman
+* [linkedIn](https://www.linkedin.com/in/billy-dorman-b51129205/ "LinkedIn Home") -- Billy Dorman
+
+* Phone:  -- Jafet Manauth
+*
+
+* Phone:  -- Zion Flores
+* 
 
